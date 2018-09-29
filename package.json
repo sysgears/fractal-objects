@@ -1,6 +1,6 @@
 {
   "name": "fractal-objects",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Fractal Objects",
   "main": "./lib/bundle.umd.js",
   "module": "./lib/index.js",

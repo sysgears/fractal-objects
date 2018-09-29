@@ -13,27 +13,31 @@ const multiplyObjects = <P>(part1: P, part2: P): P => {
     }
   }
   for (const key of keys) {
-    const constructor = !part1 || typeof part1[key] === 'undefined' ? undefined : part1[key].constructor;
-    const constructor2 = !part2 || typeof part2[key] === 'undefined' ? undefined : part2[key].constructor;
-    if (constructor === Array) {
-      for (const part of [part1, part2]) {
-        if (part && part[key] && (part[key].indexOf(undefined) >= 0 || part[key].indexOf(null) >= 0)) {
-          throw new Error(
-            `${part.constructor.name}.${key}=${JSON.stringify(part[key])}. Array with undefined values is forbidden'`
-          );
+    try {
+      const constructor = !part1 || typeof part1[key] === 'undefined' ? undefined : part1[key].constructor;
+      const constructor2 = !part2 || typeof part2[key] === 'undefined' ? undefined : part2[key].constructor;
+      if (constructor === Array) {
+        for (const part of [part1, part2]) {
+          if (part && part[key] && (part[key].indexOf(undefined) >= 0 || part[key].indexOf(null) >= 0)) {
+            throw new Error(
+              `${part.constructor.name}.${key}=${JSON.stringify(part[key])}. Array with undefined values is forbidden'`
+            );
+          }
         }
       }
-    }
-    if (typeof constructor === 'undefined' || typeof constructor2 === 'undefined') {
-      result[key] = typeof constructor === 'undefined' ? part2[key] : part1[key];
-    } else if (constructor !== constructor2) {
-      throw new Error(
-        `'${key}' has different types: ${constructor} and ${constructor2}\nPart1: ${JSON.stringify(
-          part1
-        )}\n\nPart2: ${JSON.stringify(part2)}`
-      );
-    } else {
-      result[key] = multiply(part1[key], part2[key]);
+      if (typeof constructor === 'undefined' || typeof constructor2 === 'undefined') {
+        result[key] = typeof constructor === 'undefined' ? part2[key] : part1[key];
+      } else if (constructor !== constructor2) {
+        throw new Error(
+          `'${key}' has different types: ${constructor} and ${constructor2}\nPart1: ${JSON.stringify(
+            part1
+          )}\n\nPart2: ${JSON.stringify(part2)}`
+        );
+      } else {
+        result[key] = multiply(part1[key], part2[key]);
+      }
+    } catch (e) {
+      throw new Error(`Error while handling key '${key}'`);
     }
   }
   return result;
