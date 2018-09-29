@@ -1,0 +1,5 @@
+/.history
+/.npmrc
+node_modules
+lib
+*.log
