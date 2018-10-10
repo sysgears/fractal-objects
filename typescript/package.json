@@ -14,6 +14,7 @@
     "watch": "tsc -w",
     "lint": "tslint 'src/*.ts*' -p tsconfig.json && tslint 'test/*.ts*' -p tsconfig.json",
     "tests": "jest",
+    "tests:watch": "jest --watch",
     "test": "yarn tests && yarn lint",
     "minify:browser": "uglifyjs -c -m -o ./lib/bundle.min.js -- ./lib/bundle.js",
     "postbuild": "npm run bundle",
@@ -22,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sysgears/fractal-objetcs.git"
+    "url": "git+https://github.com/sysgears/fractal-objects.git"
   },
   "keywords": [
     "apollo",
@@ -38,9 +39,9 @@
     "README.md"
   ],
   "bugs": {
-    "url": "https://github.com/sysgears/fractal-objetcs/issues"
+    "url": "https://github.com/sysgears/fractal-objects/issues"
   },
-  "homepage": "https://github.com/sysgears/fractal-objetcs",
+  "homepage": "https://github.com/sysgears/fractal-objects",
   "devDependencies": {
     "@types/jest": "^23.3.2",
     "@types/node": "^7.0.18",

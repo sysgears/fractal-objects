@@ -1,5 +1,11 @@
-/.history
-/.npmrc
+.history
+.gradle
+.ensime
+.ensime_cache
+.npmrc
+.vscode
+build
 node_modules
 lib
 *.log
+target/
