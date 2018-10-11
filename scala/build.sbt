@@ -1,3 +1,7 @@
+import org.ensime.EnsimeKeys._
+
+ensimeIgnoreMissingDirectories := true
+
 scalaVersion := "2.12.7"
 
 name := "fractalobjects"
