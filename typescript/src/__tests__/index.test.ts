@@ -38,6 +38,10 @@ describe('Fractal Objects', () => {
     ]);
   });
 
+  it('getPureParts returns empty list if fractal is not defined', () => {
+    expect(getPureParts(undefined)).toEqual([]);
+  });
+
   it('allows downstream info writing into pure parts', () => {
     interface Shape {
       key?: string;
