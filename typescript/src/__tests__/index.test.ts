@@ -1,4 +1,4 @@
-import { fold, foldTo, getPureParts } from '..';
+import { fold, foldTo, getParts } from '..';
 
 describe('Fractal Objects', () => {
   it('folds undefined to undefined', () => {
@@ -31,7 +31,8 @@ describe('Fractal Objects', () => {
   });
 
   it('returns pure parts for the nested fractal', () => {
-    expect(getPureParts(fold([fold([{ key: ['a'] }, { key: ['b', 'c'] }]), { key: ['d'] }]))).toEqual([
+    expect(getParts(fold([fold([{ key: ['a'] }, { key: ['b', 'c'] }]), { key: ['d'] }]))).toEqual([
+      { key: ['a', 'b', 'c'] },
       { key: ['a'] },
       { key: ['b', 'c'] },
       { key: ['d'] }
@@ -39,11 +40,11 @@ describe('Fractal Objects', () => {
   });
 
   it('getPureParts returns empty list if fractal is not defined', () => {
-    expect(getPureParts(undefined)).toEqual([]);
+    expect(getParts(undefined)).toEqual([]);
   });
 
   it('getPureParts returns empty list for input object', () => {
-    expect(getPureParts({})).toEqual([]);
+    expect(getParts({})).toEqual([]);
   });
 
   it('allows downstream info writing into pure parts', () => {
@@ -55,7 +56,7 @@ describe('Fractal Objects', () => {
     const whole2: Shape = {};
     foldTo(whole1, []);
     foldTo(whole2, [whole1, part]);
-    getPureParts(whole2).forEach((p: any) => (p.myKey = 'test'));
+    getParts(whole2).forEach((p: any) => (p.myKey = 'test'));
     expect(whole1).toHaveProperty('myKey');
     expect(part).toHaveProperty('myKey');
   });

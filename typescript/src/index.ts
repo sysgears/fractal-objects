@@ -82,18 +82,17 @@ export const fold = <P>(parts: P[], options?: FoldOptions): P => {
     }
   }
   if (fractal) {
-    const pureParts = [];
+    const fractalParts = [];
     for (const part of parts) {
       if (part) {
+        fractalParts.push(part);
         if ((part as any)[PARTS_KEY]) {
-          pureParts.push(...(part as any)[PARTS_KEY]);
-        } else {
-          pureParts.push(part);
+          fractalParts.push(...(part as any)[PARTS_KEY]);
         }
       }
     }
     Object.defineProperty(fractal, PARTS_KEY, {
-      value: pureParts
+      value: fractalParts
     });
   }
   return fractal;
@@ -111,6 +110,6 @@ export const foldTo = <P, W extends P>(whole: W, parts: P[], options?: FoldOptio
   }
 };
 
-export const getPureParts = <P, W extends P>(whole: W): P[] => {
+export const getParts = <P, W extends P>(whole: W): P[] => {
   return whole && (whole as any)[PARTS_KEY] ? (whole as any)[PARTS_KEY] : [];
 };
