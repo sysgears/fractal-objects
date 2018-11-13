@@ -1,4 +1,4 @@
-import { fold, getPureParts } from '..';
+import { fold, foldTo, getPureParts } from '..';
 
 describe('Fractal Objects', () => {
   it('folds undefined to undefined', () => {
@@ -36,5 +36,19 @@ describe('Fractal Objects', () => {
       { key: ['b', 'c'] },
       { key: ['d'] }
     ]);
+  });
+
+  it('allows downstream info writing into pure parts', () => {
+    interface Shape {
+      key?: string;
+    }
+    const part: Shape = { key: 'a' };
+    const whole1: Shape = {};
+    const whole2: Shape = {};
+    foldTo(whole1, []);
+    foldTo(whole2, [whole1, part]);
+    getPureParts(whole2).forEach((p: any) => (p.myKey = 'test'));
+    expect(whole1).toHaveProperty('myKey');
+    expect(part).toHaveProperty('myKey');
   });
 });
