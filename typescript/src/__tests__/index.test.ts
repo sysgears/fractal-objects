@@ -42,6 +42,10 @@ describe('Fractal Objects', () => {
     expect(getPureParts(undefined)).toEqual([]);
   });
 
+  it('getPureParts returns empty list for input object', () => {
+    expect(getPureParts({})).toEqual([]);
+  });
+
   it('allows downstream info writing into pure parts', () => {
     interface Shape {
       key?: string;

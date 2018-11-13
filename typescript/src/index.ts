@@ -112,5 +112,5 @@ export const foldTo = <P, W extends P>(whole: W, parts: P[], options?: FoldOptio
 };
 
 export const getPureParts = <P, W extends P>(whole: W): P[] => {
-  return whole ? (whole as any)[PARTS_KEY] : [];
+  return whole && (whole as any)[PARTS_KEY] ? (whole as any)[PARTS_KEY] : [];
 };
