@@ -1,3 +1,5 @@
+const PARTS_KEY = '__parts';
+
 const multiply = <P>(p1: P, p2: P, options: MultiplyOptions): P => {
   if (!p1 && !p2) {
     return undefined;
@@ -61,33 +63,54 @@ export interface MultiplyOptions {
   resultName?: string;
 }
 
-export interface UnfoldOptions extends MultiplyOptions {
-  multiply?<P>(part1: P, part2: P, unfoldOptions?: MultiplyOptions): P;
+export interface FoldOptions extends MultiplyOptions {
+  multiply?<P>(part1: P, part2: P, foldOptions?: MultiplyOptions): P;
 }
 
-export const unfold = <P>(parts: P[], options?: UnfoldOptions): P => {
+export const fold = <P>(parts: P[], options?: FoldOptions): P => {
   const defOpts = options || {};
   const opts: MultiplyOptions = { resultName: defOpts.resultName };
+  let fractal;
   if (!parts || parts.length === 0) {
-    return undefined;
+    fractal = undefined;
   } else if (parts.length === 1) {
-    return multiply(parts[0], undefined, opts);
+    fractal = multiply(parts[0], undefined, opts);
   } else {
-    let result = parts[0];
+    fractal = parts[0];
     for (let idx = 1; idx < parts.length; idx++) {
-      result = multiply(result, parts[idx], opts);
+      fractal = multiply(fractal, parts[idx], opts);
     }
-    return result;
   }
+  if (fractal) {
+    const pureParts = [];
+    for (const part of parts) {
+      if (part) {
+        if ((part as any)[PARTS_KEY]) {
+          pureParts.push(...(part as any)[PARTS_KEY]);
+        } else {
+          pureParts.push(part);
+        }
+      }
+    }
+    Object.defineProperty(fractal, PARTS_KEY, {
+      value: pureParts
+    });
+  }
+  return fractal;
 };
 
-export const unfoldTo = <P, W extends P>(whole: W, parts: P[], options?: UnfoldOptions) => {
+export const foldTo = <P, W extends P>(whole: W, parts: P[], options?: FoldOptions): void => {
   const defOpts = options || {};
-  const opts: UnfoldOptions = { multiply: defOpts.multiply || multiply };
-  const result = unfold(parts, opts);
+  const opts: FoldOptions = { multiply: defOpts.multiply || multiply };
+  const result = fold(parts, opts);
   if (result) {
     for (const key of Object.keys(result)) {
       whole[key] = result[key];
     }
+    Object.defineProperty(whole, PARTS_KEY, { value: (result as any)[PARTS_KEY] });
   }
+};
+
+export const getPureParts = <P, W extends P>(whole: W): P[] => {
+  return whole ? (whole as any)[PARTS_KEY] : undefined;
 };

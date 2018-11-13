@@ -1,0 +1,1 @@
+case class Foo(foo: Int, bar: String)
