@@ -85,9 +85,10 @@ export const fold = <P>(parts: P[], options?: FoldOptions): P => {
     const fractalParts = [];
     for (const part of parts) {
       if (part) {
-        fractalParts.push(part);
         if ((part as any)[PARTS_KEY]) {
           fractalParts.push(...(part as any)[PARTS_KEY]);
+        } else {
+          fractalParts.push(part);
         }
       }
     }

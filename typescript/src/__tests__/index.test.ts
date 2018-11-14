@@ -30,24 +30,23 @@ describe('Fractal Objects', () => {
     });
   });
 
-  it('returns pure parts for the nested fractal', () => {
+  it('returns parts for the nested fractal', () => {
     expect(getParts(fold([fold([{ key: ['a'] }, { key: ['b', 'c'] }]), { key: ['d'] }]))).toEqual([
-      { key: ['a', 'b', 'c'] },
       { key: ['a'] },
       { key: ['b', 'c'] },
       { key: ['d'] }
     ]);
   });
 
-  it('getPureParts returns empty list if fractal is not defined', () => {
+  it('getParts returns empty list if fractal is not defined', () => {
     expect(getParts(undefined)).toEqual([]);
   });
 
-  it('getPureParts returns empty list for input object', () => {
+  it('getParts returns empty list for input object', () => {
     expect(getParts({})).toEqual([]);
   });
 
-  it('allows downstream info writing into pure parts', () => {
+  it('allows downstream info writing into parts', () => {
     interface Shape {
       key?: string;
     }
