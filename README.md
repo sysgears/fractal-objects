@@ -20,15 +20,12 @@ console.log(fold([part1, part2, part3]));
 
 ## Concept
 
-A fractal object is an object that's self-similar when multiplied by another fractal object. Multiplication of two 
-fractal objects results in a new fractal object that has the same shape as the original ones.
+A fractal object is an object that has self-similarity at lower scales. Multiplication of two fractal objects results in a new fractal object that has the same shape as the original ones.
 
-If we multiply fractal objects in a list pairwise, we'll receive a new fractal object, which will represent all the
-fractal objects in the list and which will also have the same shape.
+If we multiply fractal objects in a list pairwise, we'll receive a new fractal object, which will represent all the fractal objects in the list and which will also have the same shape.
 
-By default, the multiplication function provided by the `fractal-objects` package multiplies two objects by 
-concatenating their array values, merging object values, and replacing scalars with values from the second multiplied 
-object. 
+By default, the multiplication function provided by the `fractal-objects` package multiplies two objects by concatenating their array values, merging object values, and replacing scalars with
+values from the second multiplied object.
 
 Any other multiplication function can be used if it has the following properties:
 
@@ -41,7 +38,7 @@ In terms of mathematics, fractal objects are a _[commutative semigroup]_.
 
 ## Usage
 
-Fractal Object currently has implementations for these programming languages:
+Fractal Objects currently have implementations for these programming languages:
 
   - [TypeScript](/typescript)
   - [Scala](/scala)

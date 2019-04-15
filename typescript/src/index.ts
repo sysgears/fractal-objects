@@ -1,9 +1,9 @@
 /**
  * @file Provides basic functions to fold and unfold fractal objects.
  *
- * A fractal object is an object that has self-similarity when
- * being multiplied by another fractal object. The result of such
- * multiplication is a fractal object having the same shape.
+ * A fractal object is an object that has self-similarity at lower scales.
+ * Multiplication of two fractal objects results in a new fractal object
+ * that has the same shape as the original ones.
  *
  * If we run multiplication on a list of fractal objects, by
  * multiplying items in a list pairwise we will receive
