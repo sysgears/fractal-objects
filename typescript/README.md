@@ -13,10 +13,14 @@ npm install --save-dev fractal-objects
 ``` js
 import { fold } from 'fractal-objects';
 
+// Fractal object 1
 const part1 = { arrayKey: [1], objectKey: { a: 'a', b: 'b' } };
+// Fractal object 2
 const part2 = { arrayKey: [2, 3], objectKey: { c: 'c' } };
+// Fractal object 3
 const part3 = { arrayKey: [4] }
 
+// Result of multiplication of the fractal objects above
 console.log(fold([part1, part2, part3]));
 // Output:
 // { arrayKey: [ 1, 2, 3, 4 ], objectKey: { a: 'a', b: 'b', c: 'c' } }
