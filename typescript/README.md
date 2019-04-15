@@ -52,7 +52,7 @@ Any other multiplication function can be used if it has the following properties
 3. It's _associative_. For example, multiplying `(a b) c` must have the same result as multiplying `a (b c)`.
 4. It must yield the result `a` when multiplying `undefined a` or `a undefined`.
 
-In terms of mathematics, fractal objects are a _commutative semigroup_.
+In terms of mathematics, fractal objects are a _[commutative semigroup]_.
 
 ## License
 
@@ -60,3 +60,4 @@ Copyright © 2018 [SysGears (Cyprus) Limited]. This source code is licensed unde
 
 [MIT]: LICENSE
 [SysGears (Cyprus) Limited]: http://sysgears.com
+[commutative semigroup]: https://en.wikipedia.org/wiki/Semigroup
