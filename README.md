@@ -1,59 +1,52 @@
-## Fractal Objects
+# Fractal Objects
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/sysgears.svg?style=social)](https://twitter.com/sysgears)
 
 ## Example
 
-```
-// Fractal object 1
+```javascript
+// Fractal object #1
 const part1 = { arrayKey: [1], objectKey: { a: 'a', b: 'b' } };
-// Fractal object 2
+// Fractal object #2
 const part2 = { arrayKey: [2, 3], objectKey: { c: 'c' } };
-// Fractal object 3
+// Fractal object #3
 const part3 = { arrayKey: [4] }
 
-// Result of multiplication of the fractal objects above
+// View the result of the multiplication of the fractal objects #1, #2, and #3
 console.log(fold([part1, part2, part3]));
-// Output:
+// The output is a new fractal object:
 // { arrayKey: [ 1, 2, 3, 4 ], objectKey: { a: 'a', b: 'b', c: 'c' } }
 ```
 
 ## Concept
-A fractal object is an object that has self-similarity when
-being multiplied by another fractal object. The result of such
-multiplication is a fractal object having the same shape.
 
-If we run multiplication on a list of fractal objects, by
-multiplying items in a list pairwise we will receive
-fractal object again which will be the representation
-of all the fractal objects in the list and which will have
-the same form.
+A fractal object is an object that has self-similarity at lower scales. Multiplication of two fractal objects results in a new fractal object that has the same shape as the original ones.
 
-By default multiplication function provided by this package
-multiplies two objects by concatenating array values,
-merging object values and replacing scalars with value
-from the second multipled object. But any other multiplication
-function can be used provided it has the following properties:
-  1. It keeps the shape of the object. E.g multiplicands and     result have the same shape and the same type.
-  2. It is commutative - changing the order of multiplication
-    should not change result.
-  3. It is associative - e.g. multiplying (a b) c should have
-    the same result as multiplying a (b c)
-  4. Multiplication of `undefined a` or `a undefined` yields     `a`
+If we multiply fractal objects in a list pairwise, we'll receive a new fractal object, which will represent all the fractal objects in the list and which will also have the same shape.
 
-In terms of mathematics the fractal objects is a commutative
-semigroup.
+By default, the multiplication function provided by the `fractal-objects` package multiplies two objects by concatenating their array values, merging object values, and replacing scalars with
+values from the second multiplied object.
+
+Any other multiplication function can be used if it has the following properties:
+
+1. It _keeps the object shape_: The multiplicands and the result must have the same shape and type.
+2. It's _commutative_. If you change the order of multiplication, the result must not change.
+3. It's _associative_. For example, multiplying `(a b) c` must have the same result as multiplying `a (b c)`.
+4. It must yield the result `a` when multiplying `undefined a` or `a undefined`.
+
+In terms of mathematics, fractal objects are a _[commutative semigroup]_.
 
 ## Usage
 
-Fractal Object operations for different languages.
+Fractal Objects currently have implementations for these programming languages:
 
-Lanugage-specific implementations are available for:
   - [TypeScript](/typescript)
   - [Scala](/scala)
 
 ## License
+
 Copyright © 2018 [SysGears (Cyprus) Limited]. This source code is licensed under the [MIT] license.
 
 [MIT]: LICENSE
 [SysGears (Cyprus) Limited]: http://sysgears.com
+[commutative semigroup]: https://en.wikipedia.org/wiki/Semigroup
