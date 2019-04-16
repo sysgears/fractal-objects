@@ -156,7 +156,7 @@ export interface FoldOptions {
  */
 export const fold = <P>(parts: P[], options?: FoldOptions): P => {
   const opts = {
-    multiply: options.multiply || defaultMultiply
+    multiply: (options || {}).multiply || defaultMultiply
   };
   let fractal;
   if (!parts || parts.length === 0) {
