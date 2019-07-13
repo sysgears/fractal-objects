@@ -1,6 +1,6 @@
 {
   "name": "fractal-objects",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Fractal Objects",
   "main": "./lib/bundle.umd.js",
   "module": "./lib/index.js",
@@ -43,19 +43,19 @@
   },
   "homepage": "https://github.com/sysgears/fractal-objects",
   "devDependencies": {
-    "@types/jest": "^23.3.2",
-    "@types/node": "^7.0.18",
-    "husky": "^0.14.3",
-    "jest": "^23.6.0",
-    "lint-staged": "^4.1.3",
-    "prettier": "^1.6.1",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.50.0",
-    "ts-jest": "^23.10.1",
-    "tslint": "^5.2.0",
-    "tslint-config-prettier": "^1.5.0",
-    "tslint-plugin-prettier": "^1.3.0",
-    "typescript": "^2.3.2"
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.6.2",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.16.7",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.3"
   },
   "lint-staged": {
     "*.ts": [
