@@ -30,11 +30,10 @@ values from the second multiplied object.
 Any other multiplication function can be used if it has the following properties:
 
 1. It _keeps the object shape_: The multiplicands and the result must have the same shape and type.
-2. It's _commutative_. If you change the order of multiplication, the result must not change.
-3. It's _associative_. For example, multiplying `(a b) c` must have the same result as multiplying `a (b c)`.
-4. It must yield the result `a` when multiplying `undefined a` or `a undefined`.
+2. It's _associative_. For example, multiplying `(a b) c` must have the same result as multiplying `a (b c)`.
+3. It must yield the result `a` when multiplying `undefined a` or `a undefined`.
 
-In terms of mathematics, fractal objects are a _[commutative semigroup]_.
+In terms of mathematics, fractal objects are a _[semigroup]_.
 
 ## Usage
 
