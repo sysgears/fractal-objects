@@ -181,7 +181,8 @@ export const fold = <P>(parts: P[], options?: FoldOptions): P => {
       }
     }
     Object.defineProperty(fractal, PARTS_KEY, {
-      value: fractalParts
+      value: fractalParts,
+      configurable: true
     });
   }
   return fractal;
@@ -207,7 +208,7 @@ export const foldTo = <P, W extends P>(whole: W, parts: P[], options?: FoldOptio
     for (const key of Object.keys(result)) {
       whole[key] = result[key];
     }
-    Object.defineProperty(whole, PARTS_KEY, { value: (result as any)[PARTS_KEY] });
+    Object.defineProperty(whole, PARTS_KEY, { value: (result as any)[PARTS_KEY], configurable: true });
   }
 };
 
